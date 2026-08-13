@@ -374,234 +374,353 @@ footer {
     }
 
 }
+
+
 /* =========================================================
-   LOVE SONGS — ROMANTIC THEME
-   Applies ONLY to .love-page
+   ❤️ LOVE SONGS — ROMANTIC THEME
+   ONLY applies to body.love-page
    ========================================================= */
 
 body.love-page {
-    color: #fff7fa;
+    color: #fff5f8 !important;
 
     background:
         radial-gradient(
-            circle at 12% 8%,
-            rgba(255, 105, 150, 0.28),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 88% 18%,
-            rgba(190, 55, 105, 0.22),
+            ellipse at 20% 10%,
+            rgba(255, 92, 145, 0.38),
             transparent 32%
         ),
         radial-gradient(
-            circle at 50% 100%,
-            rgba(125, 25, 70, 0.28),
-            transparent 38%
+            ellipse at 82% 20%,
+            rgba(213, 67, 119, 0.30),
+            transparent 34%
+        ),
+        radial-gradient(
+            ellipse at 50% 85%,
+            rgba(151, 30, 76, 0.35),
+            transparent 42%
         ),
         linear-gradient(
-            145deg,
-            #16070f,
-            #2b0d1b 48%,
-            #170811
-        );
+            135deg,
+            #260913 0%,
+            #3b1022 42%,
+            #210914 72%,
+            #12060c 100%
+        ) !important;
+
+    background-attachment: fixed;
 }
 
 
-/* Back link */
+/* BACK LINK */
 
 body.love-page .back {
-    color: #e8b7c8;
+    color: #f4b7c9 !important;
 }
 
 body.love-page .back:hover {
-    color: #ff8fb3;
+    color: #ff8fb3 !important;
 }
 
 
-/* Pink romantic headings */
+/* HEADER */
 
-body.love-page .eyebrow,
-body.love-page .label {
-    color: #ff8fb3;
-}
-
-
-/* Main Love Songs heading */
-
-body.love-page .hero h1 span {
-    color: #ff7fa8;
+body.love-page .hero {
+    position: relative;
 }
 
 
 /* Heart */
 
 body.love-page .heart {
-    border-color: rgba(255, 125, 165, 0.45);
+    color: #ff789f !important;
+
+    border-color: rgba(255, 125, 165, 0.65) !important;
 
     background:
         radial-gradient(
             circle,
-            rgba(255, 105, 150, 0.12),
+            rgba(255, 80, 130, 0.22),
+            rgba(255, 80, 130, 0.03) 65%,
             transparent 70%
-        );
-
-    color: #ff7fa8;
+        ) !important;
 
     box-shadow:
-        0 0 25px rgba(255, 80, 130, 0.16);
+        0 0 20px rgba(255, 75, 130, 0.28),
+        0 0 55px rgba(255, 55, 110, 0.12);
+}
+
+
+/* "MELODIES OF LOVE" */
+
+body.love-page .eyebrow {
+    color: #ff9bb8 !important;
+}
+
+
+/* LOVE SONGS */
+
+body.love-page .hero h1 {
+    color: #fff3f7 !important;
+
+    text-shadow:
+        0 3px 20px rgba(255, 80, 130, 0.15);
+}
+
+body.love-page .hero h1 span {
+    color: #ff7fa8 !important;
+
+    text-shadow:
+        0 0 25px rgba(255, 80, 130, 0.25);
 }
 
 
 /* Subtitle */
 
 body.love-page .subtitle {
-    color: #dfbdca;
+    color: #efc5d2 !important;
 }
 
 
-/* Player and playlist cards */
+/* =========================================================
+   PLAYER CARD
+   ========================================================= */
 
-body.love-page .card,
-body.love-page .playlist {
-    border-color: rgba(255, 125, 165, 0.18);
-
+body.love-page .card {
     background:
         linear-gradient(
             145deg,
-            rgba(49, 16, 31, 0.92),
-            rgba(29, 10, 20, 0.94)
-        );
+            rgba(61, 17, 35, 0.96),
+            rgba(36, 9, 21, 0.97)
+        ) !important;
+
+    border-color:
+        rgba(255, 126, 165, 0.28) !important;
 
     box-shadow:
-        0 20px 60px rgba(70, 5, 30, 0.20);
+        0 25px 80px rgba(92, 8, 43, 0.35),
+        inset 0 1px 0 rgba(255, 180, 200, 0.05);
 }
 
 
-/* Album artwork */
+/* NOW PLAYING */
+
+body.love-page .label {
+    color: #ff91b0 !important;
+}
+
+body.love-page .now h2 {
+    color: #fff3f7 !important;
+}
+
+body.love-page .now p {
+    color: #dcb2c1 !important;
+}
+
+
+/* =========================================================
+   ALBUM ART
+   ========================================================= */
 
 body.love-page .art {
     background:
         radial-gradient(
-            circle at 30% 25%,
-            #ff9fbd,
+            circle at 30% 20%,
+            #ffb4ca 0%,
+            #e85b88 18%,
             transparent 20%
         ),
         linear-gradient(
-            135deg,
-            #59152f,
-            #c43d70
-        );
+            145deg,
+            #701b40,
+            #c6386b 55%,
+            #7c173d
+        ) !important;
 
     box-shadow:
-        0 8px 25px rgba(190, 40, 90, 0.30);
+        0 8px 30px rgba(222, 48, 105, 0.40);
 }
 
 
-/* Vinyl */
-
 body.love-page .vinyl {
-    color: #ff91b2;
+    color: #ff91b1 !important;
 
     background:
         repeating-radial-gradient(
             circle,
-            #180911 0 3px,
-            #351322 4px 6px
-        );
+            #17070e 0 3px,
+            #3d1024 4px 6px
+        ) !important;
+
+    border-color: #18060d !important;
 }
 
 
-/* Song title */
+/* =========================================================
+   VIDEO AREA
+   ========================================================= */
 
-body.love-page .now h2 {
-    color: #fff4f8;
+body.love-page .video {
+    background:
+        linear-gradient(
+            145deg,
+            #17060d,
+            #260b18
+        ) !important;
+
+    border: 1px solid
+        rgba(255, 126, 165, 0.15);
+
+    box-shadow:
+        0 12px 40px rgba(65, 4, 29, 0.25);
 }
 
 
-/* Source buttons */
+/* =========================================================
+   YOUTUBE / SPOTIFY BUTTONS
+   ========================================================= */
 
 body.love-page #sourceControls button {
-    border-color: rgba(255, 125, 165, 0.24) !important;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 108, 151, 0.18),
+            rgba(184, 46, 99, 0.12)
+        ) !important;
 
-    background: rgba(255, 105, 150, 0.07) !important;
+    color: #ffe8ef !important;
 
-    color: #ffe9f0 !important;
+    border-color:
+        rgba(255, 137, 169, 0.38) !important;
+
+    box-shadow:
+        0 4px 15px rgba(100, 10, 45, 0.15);
 }
 
 body.love-page #sourceControls button:hover {
-    border-color: rgba(255, 125, 165, 0.60) !important;
+    background:
+        rgba(255, 100, 150, 0.28) !important;
 
-    background: rgba(255, 105, 150, 0.18) !important;
+    border-color:
+        rgba(255, 150, 180, 0.70) !important;
 }
 
 
-/* Previous / Next */
+/* =========================================================
+   PREVIOUS / NEXT
+   ========================================================= */
 
 body.love-page .controls button {
-    border-color: rgba(255, 125, 165, 0.20);
+    background:
+        linear-gradient(
+            145deg,
+            #4b1530,
+            #2d0b1d
+        ) !important;
 
-    background: #351322;
+    color: #ffd9e5 !important;
 
-    color: #ffdce7;
+    border-color:
+        rgba(255, 130, 170, 0.30) !important;
+
+    box-shadow:
+        0 5px 18px rgba(82, 7, 40, 0.25);
 }
 
 body.love-page .controls button:hover {
-    background: #541b35;
+    background:
+        linear-gradient(
+            145deg,
+            #681b40,
+            #401027
+        ) !important;
 
-    border-color: rgba(255, 125, 165, 0.45);
+    border-color:
+        rgba(255, 150, 180, 0.60) !important;
 }
 
 
-/* Playlist heading */
+/* =========================================================
+   PLAYLIST
+   ========================================================= */
+
+body.love-page .playlist {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(57, 15, 33, 0.96),
+            rgba(32, 8, 19, 0.97)
+        ) !important;
+
+    border-color:
+        rgba(255, 126, 165, 0.24) !important;
+
+    box-shadow:
+        0 20px 60px rgba(88, 7, 40, 0.28);
+}
+
 
 body.love-page .heading h2 {
-    color: #fff0f5;
+    color: #fff0f5 !important;
 }
 
 
-/* Playlist songs */
+body.love-page .count {
+    color: #d9aabb !important;
+}
+
+
+/* SONG ROW */
 
 body.love-page .song {
-    background: rgba(255, 105, 150, 0.035);
+    background:
+        rgba(255, 105, 150, 0.045) !important;
+
+    border-color:
+        rgba(255, 130, 165, 0.04) !important;
 }
 
 body.love-page .song:hover {
-    background: rgba(255, 105, 150, 0.10);
+    background:
+        rgba(255, 105, 150, 0.13) !important;
 
-    border-color: rgba(255, 125, 165, 0.20);
+    border-color:
+        rgba(255, 130, 165, 0.25) !important;
 }
+
 
 body.love-page .song.active {
     background:
         linear-gradient(
             90deg,
-            rgba(255, 105, 150, 0.16),
-            rgba(255, 105, 150, 0.05)
-        );
+            rgba(255, 91, 143, 0.23),
+            rgba(255, 91, 143, 0.06)
+        ) !important;
 
-    border-color: rgba(255, 125, 165, 0.35);
+    border-color:
+        rgba(255, 130, 165, 0.42) !important;
 
     box-shadow:
-        inset 3px 0 0 #ff7fa8;
+        inset 4px 0 0 #ff789f,
+        0 5px 20px rgba(110, 10, 50, 0.16);
 }
 
-
-/* Song numbers */
 
 body.love-page .num {
-    color: #c996a9;
+    color: #d19aaa !important;
 }
 
-
-/* Play/source indicators */
+body.love-page .name {
+    color: #fff2f6 !important;
+}
 
 body.love-page .play {
-    color: #ff8fb3;
+    color: #ff8eae !important;
 }
 
 
-/* Footer */
+/* FOOTER */
 
 body.love-page footer {
-    color: #c99aaa;
+    color: #d19aaa !important;
 }
