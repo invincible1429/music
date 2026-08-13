@@ -1,28 +1,880 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport"
-            content="width=device-width,initial-scale=1"><title>90's Songs Collection 🎵</title><link rel="stylesheet"
-            href="../../player.css"></head><body><main class="page">
-            <a class="back" href="../../">← Music Collection</a><header
-                class="hero"><div class="heart">🎸</div><p class="eyebrow">Throwback vibes from</p><h1>90's
-                    <span>Songs</span></h1><p class="subtitle">The best songs from the golden era of the 90s.</p></header>
-            <section class="card"><div class="now"><div class="art"><div
-                            class="vinyl">🎵</div></div><div><p class="label">NOW
-                            PLAYING</p><h2 id="title"></h2><p
-                            id="position"></p></div></div><div
-                    class="video"><iframe id="player"
-                        title="YouTube music player"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen></iframe></div><div
-                    class="controls"><button id="prev" type="button"
-                        disabled>⏮</button><button id="next"
-                        type="button">⏭</button></div></section>
-            <section class="playlist"><div class="heading"><div><p
-                            class="label">YOUR COLLECTION</p><h2>Favourite
-                            Songs</h2></div><span class="count"
-                        id="count"></span></div><div class="songs"
-                    id="songs"></div></section><footer>Made with 🎶 for 90's lovers</footer></main>
-        <script>
-const songs=[{title:'90s Song 1',youtubeId:'dQw4w9WgXcQ'},{title:'90s Song 2',youtubeId:'9bZkp7q19f0'},{title:'Tujhse Naraaz Nahin Zindagi',youtubeId:'LZ_YUOr-tYw'}];let current=0;
-const player=document.getElementById('player'),title=document.getElementById('title'),position=document.getElementById('position'),list=document.getElementById('songs'),count=document.getElementById('count'),prev=document.getElementById('prev'),next=document.getElementById('next');
-function render(){if(!songs.length){title.textContent='Playlist coming soon';position.textContent='Add a song to begin';count.textContent='0 songs';list.innerHTML='<p style="color:#cdbfca;font-size:13px">This playlist is ready for songs.</p>';prev.disabled=true;next.disabled=true;player.removeAttribute('src');return}const s=songs[current];title.textContent=s.title;position.textContent=`Song ${current+1} of ${songs.length}`;count.textContent=`${songs.length} ${songs.length===1?'song':'songs'}`;player.src=`https://www.youtube.com/embed/${encodeURIComponent(s.youtubeId)}?rel=0&playsinline=1`;prev.disabled=current===0;next.disabled=current===songs.length-1;list.innerHTML='';songs.forEach((s,i)=>{const b=document.createElement('button');b.className='song'+(i===current?' active':'');b.type='button';b.innerHTML=`<span class="num">${String(i+1).padStart(2,'0')}</span><span class="name"></span><span class="play">${i===current?'●':'›'}</span>`;b.querySelector('.name').textContent=s.title;b.onclick=()=>{current=i;render()};list.appendChild(b)})}
-prev.onclick=()=>{if(current>0){current--;render()}};next.onclick=()=>{if(current<songs.length-1){current++;render()}};render();
-</script></body></html>
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width,initial-scale=1"
+    >
+
+    <title>90's Songs Collection 📻</title>
+
+    <link
+        rel="stylesheet"
+        href="../../player.css"
+    >
+
+</head>
+
+
+<body>
+
+<main class="page">
+
+
+    <!-- Back to Sneha's Music -->
+    <a
+        class="back"
+        href="../"
+    >
+        ← Sneha's Music
+    </a>
+
+
+    <!-- Header -->
+    <header class="hero">
+
+        <div class="heart">
+            📻
+        </div>
+
+        <p class="eyebrow">
+            Timeless melodies
+        </p>
+
+        <h1>
+            90's <span>Songs</span>
+        </h1>
+
+        <p class="subtitle">
+            Timeless melodies and unforgettable memories.
+        </p>
+
+    </header>
+
+
+    <!-- Music Player -->
+    <section class="card">
+
+
+        <!-- Current Song -->
+        <div class="now">
+
+            <div class="art">
+
+                <div class="vinyl">
+                    🎵
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <p class="label">
+                    NOW PLAYING
+                </p>
+
+                <h2 id="title">
+                </h2>
+
+                <p id="position">
+                </p>
+
+                <p
+                    id="sourceLabel"
+                    style="
+                        color:#f08db6;
+                        font-size:11px;
+                        margin-top:5px;
+                    "
+                >
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- YouTube / Spotify Player -->
+        <div class="video">
+
+            <iframe
+                id="player"
+                title="90's music player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                style="border-radius:12px;"
+            >
+            </iframe>
+
+        </div>
+
+
+        <!-- YouTube / Spotify selector -->
+        <div
+            id="sourceControls"
+            style="
+                display:flex;
+                justify-content:center;
+                gap:10px;
+                padding-top:14px;
+                flex-wrap:wrap;
+            "
+        >
+        </div>
+
+
+        <!-- Previous / Next -->
+        <div class="controls">
+
+            <button
+                id="prev"
+                type="button"
+                aria-label="Previous song"
+                disabled
+            >
+                ⏮
+            </button>
+
+            <button
+                id="next"
+                type="button"
+                aria-label="Next song"
+                disabled
+            >
+                ⏭
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Playlist -->
+    <section class="playlist">
+
+        <div class="heading">
+
+            <div>
+
+                <p class="label">
+                    YOUR COLLECTION
+                </p>
+
+                <h2>
+                    90's Favourite Songs
+                </h2>
+
+            </div>
+
+            <span
+                class="count"
+                id="count"
+            >
+                0 songs
+            </span>
+
+        </div>
+
+
+        <div
+            class="songs"
+            id="songs"
+        >
+        </div>
+
+    </section>
+
+
+    <footer>
+        Made with 📻 & memories for Sneha
+    </footer>
+
+
+</main>
+
+
+<script>
+
+/*
+===========================================================
+                    90's SONG COLLECTION
+===========================================================
+
+ADD SONGS HERE.
+
+YouTube only:
+
+{
+    title: "Song Name",
+    youtubeId: "XXXXXXXXXXX"
+}
+
+
+Spotify only:
+
+{
+    title: "Song Name",
+    spotifyId: "XXXXXXXXXXX"
+}
+
+
+Both YouTube + Spotify:
+
+{
+    title: "Song Name",
+    youtubeId: "XXXXXXXXXXX",
+    spotifyId: "XXXXXXXXXXX"
+}
+
+===========================================================
+*/
+
+
+const songs = [
+
+    /*
+    =======================================================
+                    ADD 90's SONGS HERE
+    =======================================================
+
+
+    Example:
+
+    {
+        title: "Pehla Nasha",
+        youtubeId: "XXXXXXXXXXX"
+    },
+
+
+    Another example:
+
+    {
+        title: "Aankhon Ki Gustakhiyan",
+        youtubeId: "XXXXXXXXXXX",
+        spotifyId: "XXXXXXXXXXX"
+    },
+
+
+    Spotify only:
+
+    {
+        title: "90's Favourite",
+        spotifyId: "XXXXXXXXXXX"
+    }
+
+
+    =======================================================
+    */
+
+];
+
+
+let current = 0;
+
+let currentSource = null;
+
+
+/*
+===========================================================
+                    ELEMENTS
+===========================================================
+*/
+
+const player =
+    document.getElementById("player");
+
+const title =
+    document.getElementById("title");
+
+const position =
+    document.getElementById("position");
+
+const sourceLabel =
+    document.getElementById("sourceLabel");
+
+const sourceControls =
+    document.getElementById("sourceControls");
+
+const list =
+    document.getElementById("songs");
+
+const count =
+    document.getElementById("count");
+
+const prev =
+    document.getElementById("prev");
+
+const next =
+    document.getElementById("next");
+
+
+/*
+===========================================================
+                    LOAD PLAYER
+===========================================================
+*/
+
+function loadPlayer(song, source) {
+
+    player.removeAttribute("src");
+
+
+    /*
+    YouTube
+    */
+
+    if (
+        source === "youtube" &&
+        song.youtubeId
+    ) {
+
+        player.src =
+            `https://www.youtube.com/embed/${encodeURIComponent(song.youtubeId)}?rel=0&playsinline=1`;
+
+        sourceLabel.textContent =
+            "▶ YouTube";
+
+        currentSource =
+            "youtube";
+
+        return;
+
+    }
+
+
+    /*
+    Spotify
+    */
+
+    if (
+        source === "spotify" &&
+        song.spotifyId
+    ) {
+
+        player.src =
+            `https://open.spotify.com/embed/track/${encodeURIComponent(song.spotifyId)}?utm_source=generator`;
+
+        sourceLabel.textContent =
+            "🎵 Spotify";
+
+        currentSource =
+            "spotify";
+
+        return;
+
+    }
+
+
+    /*
+    No source
+    */
+
+    currentSource = null;
+
+    sourceLabel.textContent =
+        "No playable source available";
+
+}
+
+
+/*
+===========================================================
+                SOURCE BUTTONS
+===========================================================
+*/
+
+function renderSourceButtons(song) {
+
+    sourceControls.innerHTML =
+        "";
+
+
+    const sources = [];
+
+
+    if (song.youtubeId) {
+
+        sources.push({
+            id: "youtube",
+            label: "▶ YouTube"
+        });
+
+    }
+
+
+    if (song.spotifyId) {
+
+        sources.push({
+            id: "spotify",
+            label: "🎵 Spotify"
+        });
+
+    }
+
+
+    /*
+    No source
+    */
+
+    if (!sources.length) {
+
+        sourceControls.innerHTML =
+            `
+            <span
+                style="
+                    color:#cdbfca;
+                    font-size:12px;
+                "
+            >
+                Add a song to start listening
+            </span>
+            `;
+
+        return;
+
+    }
+
+
+    /*
+    Create source buttons
+    */
+
+    sources.forEach(
+        source => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.type =
+                "button";
+
+
+            button.textContent =
+                source.label;
+
+
+            button.style.border =
+                "1px solid rgba(255,255,255,.12)";
+
+
+            button.style.borderRadius =
+                "20px";
+
+
+            button.style.padding =
+                "9px 16px";
+
+
+            button.style.cursor =
+                "pointer";
+
+
+            button.style.color =
+                "#fff8fc";
+
+
+            button.style.background =
+                "rgba(255,255,255,.06)";
+
+
+            /*
+            Highlight selected source
+            */
+
+            if (
+                source.id ===
+                currentSource
+            ) {
+
+                button.style.background =
+                    "rgba(240,141,182,.18)";
+
+                button.style.borderColor =
+                    "rgba(240,141,182,.45)";
+
+            }
+
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    loadPlayer(
+                        song,
+                        source.id
+                    );
+
+                    renderSourceButtons(
+                        song
+                    );
+
+                }
+            );
+
+
+            sourceControls.appendChild(
+                button
+            );
+
+        }
+    );
+
+}
+
+
+/*
+===========================================================
+                    RENDER PAGE
+===========================================================
+*/
+
+function render() {
+
+
+    /*
+    Empty playlist
+    */
+
+    if (!songs.length) {
+
+        title.textContent =
+            "90's playlist coming soon";
+
+        position.textContent =
+            "Add your favourite 90's songs";
+
+        count.textContent =
+            "0 songs";
+
+
+        sourceLabel.textContent =
+            "";
+
+
+        list.innerHTML =
+            `
+            <p
+                style="
+                    color:#cdbfca;
+                    font-size:13px;
+                "
+            >
+                This playlist is ready for your
+                favourite 90's songs. 📻
+            </p>
+            `;
+
+
+        prev.disabled =
+            true;
+
+
+        next.disabled =
+            true;
+
+
+        sourceControls.innerHTML =
+            "";
+
+
+        player.removeAttribute(
+            "src"
+        );
+
+
+        return;
+
+    }
+
+
+    /*
+    Current song
+    */
+
+    const song =
+        songs[current];
+
+
+    title.textContent =
+        song.title;
+
+
+    position.textContent =
+        `Song ${current + 1} of ${songs.length}`;
+
+
+    count.textContent =
+        `${songs.length} ${
+            songs.length === 1
+                ? "song"
+                : "songs"
+        }`;
+
+
+    /*
+    Choose default source
+    */
+
+    if (
+        currentSource === null ||
+        (
+            currentSource === "youtube" &&
+            !song.youtubeId
+        ) ||
+        (
+            currentSource === "spotify" &&
+            !song.spotifyId
+        )
+    ) {
+
+        if (song.youtubeId) {
+
+            currentSource =
+                "youtube";
+
+        }
+        else if (song.spotifyId) {
+
+            currentSource =
+                "spotify";
+
+        }
+        else {
+
+            currentSource =
+                null;
+
+        }
+
+    }
+
+
+    /*
+    Load player
+    */
+
+    if (currentSource) {
+
+        loadPlayer(
+            song,
+            currentSource
+        );
+
+    }
+    else {
+
+        player.removeAttribute(
+            "src"
+        );
+
+    }
+
+
+    /*
+    Source buttons
+    */
+
+    renderSourceButtons(
+        song
+    );
+
+
+    /*
+    Navigation
+    */
+
+    prev.disabled =
+        current === 0;
+
+    next.disabled =
+        current === songs.length - 1;
+
+
+    /*
+    Playlist
+    */
+
+    list.innerHTML =
+        "";
+
+
+    songs.forEach(
+        (song, index) => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.type =
+                "button";
+
+
+            button.className =
+                "song" +
+                (
+                    index === current
+                        ? " active"
+                        : ""
+                );
+
+
+            /*
+            Source indicator
+            */
+
+            let sourceIcon =
+                "›";
+
+
+            if (
+                song.youtubeId &&
+                song.spotifyId
+            ) {
+
+                sourceIcon =
+                    "YT • SP";
+
+            }
+            else if (
+                song.youtubeId
+            ) {
+
+                sourceIcon =
+                    "▶";
+
+            }
+            else if (
+                song.spotifyId
+            ) {
+
+                sourceIcon =
+                    "🎵";
+
+            }
+
+
+            button.innerHTML =
+                `
+                <span class="num">
+                    ${String(index + 1).padStart(2, "0")}
+                </span>
+
+                <span class="name"></span>
+
+                <span
+                    class="play"
+                    style="font-size:10px;"
+                >
+                    ${sourceIcon}
+                </span>
+                `;
+
+
+            button
+                .querySelector(".name")
+                .textContent =
+                song.title;
+
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    current =
+                        index;
+
+                    currentSource =
+                        null;
+
+                    render();
+
+                }
+            );
+
+
+            list.appendChild(
+                button
+            );
+
+        }
+    );
+
+}
+
+
+/*
+===========================================================
+                    PREVIOUS
+===========================================================
+*/
+
+prev.addEventListener(
+    "click",
+    () => {
+
+        if (current > 0) {
+
+            current--;
+
+            currentSource =
+                null;
+
+            render();
+
+        }
+
+    }
+);
+
+
+/*
+===========================================================
+                    NEXT
+===========================================================
+*/
+
+next.addEventListener(
+    "click",
+    () => {
+
+        if (
+            current <
+            songs.length - 1
+        ) {
+
+            current++;
+
+            currentSource =
+                null;
+
+            render();
+
+        }
+
+    }
+);
+
+
+/*
+===========================================================
+                    INITIAL LOAD
+===========================================================
+*/
+
+render();
+
+</script>
+
+</body>
+
+</html>
