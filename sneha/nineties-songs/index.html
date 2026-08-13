@@ -1,9 +1,9 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport"
-            content="width=device-width,initial-scale=1"><title>Love Songs Collection 💕</title><link rel="stylesheet"
-            href="../player.css"></head><body><main class="page">
-            <a class="back" href="../">← Music Collection</a><header
-                class="hero"><div class="heart">💕</div><p class="eyebrow">Melodies of love</p><h1>Love
-                    <span>Songs</span></h1><p class="subtitle">Romantic songs that touch your heart.</p></header>
+            content="width=device-width,initial-scale=1"><title>90's Songs Collection 🎵</title><link rel="stylesheet"
+            href="../../player.css"></head><body><main class="page">
+            <a class="back" href="../../">← Music Collection</a><header
+                class="hero"><div class="heart">🎸</div><p class="eyebrow">Throwback vibes from</p><h1>90's
+                    <span>Songs</span></h1><p class="subtitle">The best songs from the golden era of the 90s.</p></header>
             <section class="card"><div class="now"><div class="art"><div
                             class="vinyl">🎵</div></div><div><p class="label">NOW
                             PLAYING</p><h2 id="title"></h2><p
@@ -19,9 +19,9 @@
                             class="label">YOUR COLLECTION</p><h2>Favourite
                             Songs</h2></div><span class="count"
                         id="count"></span></div><div class="songs"
-                    id="songs"></div></section><footer>Made with 💕 for love song enthusiasts</footer></main>
+                    id="songs"></div></section><footer>Made with 🎶 for 90's lovers</footer></main>
         <script>
-const songs=[{title:'Love Song 1',youtubeId:'xIJXKr8SSUQ'},{title:'Love Song 2',youtubeId:'0diJNmwsSqQ'}];let current=0;
+const songs=[{title:'90s Song 1',youtubeId:'dQw4w9WgXcQ'},{title:'90s Song 2',youtubeId:'9bZkp7q19f0'},{title:'Tujhse Naraaz Nahin Zindagi',youtubeId:'LZ_YUOr-tYw'}];let current=0;
 const player=document.getElementById('player'),title=document.getElementById('title'),position=document.getElementById('position'),list=document.getElementById('songs'),count=document.getElementById('count'),prev=document.getElementById('prev'),next=document.getElementById('next');
 function render(){if(!songs.length){title.textContent='Playlist coming soon';position.textContent='Add a song to begin';count.textContent='0 songs';list.innerHTML='<p style="color:#cdbfca;font-size:13px">This playlist is ready for songs.</p>';prev.disabled=true;next.disabled=true;player.removeAttribute('src');return}const s=songs[current];title.textContent=s.title;position.textContent=`Song ${current+1} of ${songs.length}`;count.textContent=`${songs.length} ${songs.length===1?'song':'songs'}`;player.src=`https://www.youtube.com/embed/${encodeURIComponent(s.youtubeId)}?rel=0&playsinline=1`;prev.disabled=current===0;next.disabled=current===songs.length-1;list.innerHTML='';songs.forEach((s,i)=>{const b=document.createElement('button');b.className='song'+(i===current?' active':'');b.type='button';b.innerHTML=`<span class="num">${String(i+1).padStart(2,'0')}</span><span class="name"></span><span class="play">${i===current?'●':'›'}</span>`;b.querySelector('.name').textContent=s.title;b.onclick=()=>{current=i;render()};list.appendChild(b)})}
 prev.onclick=()=>{if(current>0){current--;render()}};next.onclick=()=>{if(current<songs.length-1){current++;render()}};render();
