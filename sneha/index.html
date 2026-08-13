@@ -1,36 +1,893 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport"
-            content="width=device-width,initial-scale=1"><title>Sneha's Music
-            Corner ❤️</title><link rel="stylesheet"
-            href="../player.css"></head><body><main class="page">
-            <a class="back" href="../">← Music Collection</a><header
-                class="hero"><p class="eyebrow">A
-                    little corner made for</p><h1>Sneha's
-                    <span>Music</span></h1><p class="subtitle">Her music corner
-                    — ready for her favourite songs.</p></header>
-            <section class="card"><div class="now"><div><p class="label">NOW
-                            PLAYING</p><h2 id="title"></h2><p
-                            id="position"></p></div></div><div
-                    class="video"><iframe id="player"
-                        title="YouTube music player"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen></iframe></div><div
-                    class="controls"><button id="prev" type="button"
-                        disabled>⏮</button><button id="next"
-                        type="button">⏭</button></div></section>
-            <section class="playlist"><div class="heading"><div><p
-                            class="label">YOUR COLLECTION</p><h2>Favourite
-                            Songs</h2></div><span class="count"
-                        id="count"></span></div><div class="songs"
-                    id="songs"></div></section>
-            <section class="people"><div class="heading"><div><p
-                            class="label">SONG COLLECTIONS</p><h2>Explore Collections</h2></div></div>
-                    <a class="person" href="love-songs/"><div class="avatar">💕</div><div><h2>Love Songs</h2><p>Romantic melodies & heartfelt moments</p></div><b>→</b></a>
-                    <a class="person" href="nineties-songs/"><div class="avatar">90</div><div><h2>90's Songs</h2><p>Timeless classics from the golden era</p></div><b>→</b></a>
-            </section><footer>Made with ❤️ for
-                Sneha</footer></main>
-        <script>
-const songs=[];let current=0;
-const player=document.getElementById('player'),title=document.getElementById('title'),position=document.getElementById('position'),list=document.getElementById('songs'),count=document.getElementById('count'),prev=document.getElementById('prev'),next=document.getElementById('next');
-function render(){if(!songs.length){prev.disabled=true;next.disabled=true;player.removeAttribute('src');return}const s=songs[current];title.textContent=s.title;position.textContent=`Song ${current+1} of ${songs.length}`;count.textContent=`${songs.length} ${songs.length===1?'song':'songs'}`;player.src=`https://www.youtube.com/embed/${encodeURIComponent(s.youtubeId)}?rel=0&playsinline=1`;prev.disabled=current===0;next.disabled=current===songs.length-1;list.innerHTML='';songs.forEach((s,i)=>{const b=document.createElement('button');b.className='song'+(i===current?' active':'');b.type='button';b.innerHTML=`<span class="num">${String(i+1).padStart(2,'0')}</span><span class="name"></span><span class="play">${i===current?'●':'›'}</span>`;b.querySelector('.name').textContent=s.title;b.onclick=()=>{current=i;render()};list.appendChild(b)})}
-prev.onclick=()=>{if(current>0){current--;render()}};next.onclick=()=>{if(current<songs.length-1){current++;render()}};render();
-</script></body></html>
+```html
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>Love Songs Collection 💕</title>
+
+    <link
+        rel="stylesheet"
+        href="../../player.css"
+    >
+</head>
+
+
+<body>
+
+<main class="page">
+
+    <!-- Back to main Music Collection -->
+    <a
+        class="back"
+        href="../../"
+    >
+        ← Music Collection
+    </a>
+
+
+    <!-- Page Header -->
+    <header class="hero">
+
+        <div class="heart">
+            💕
+        </div>
+
+        <p class="eyebrow">
+            Melodies of love
+        </p>
+
+        <h1>
+            Love <span>Songs</span>
+        </h1>
+
+        <p class="subtitle">
+            Romantic songs that touch your heart.
+        </p>
+
+    </header>
+
+
+    <!-- Music Player -->
+    <section class="card">
+
+        <!-- Current Song Information -->
+        <div class="now">
+
+            <div class="art">
+
+                <div class="vinyl">
+                    🎵
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <p class="label">
+                    NOW PLAYING
+                </p>
+
+                <h2 id="title">
+                </h2>
+
+                <p id="position">
+                </p>
+
+                <!-- Current Source -->
+                <p
+                    id="sourceLabel"
+                    style="color:#f08db6;font-size:11px;margin-top:5px;"
+                >
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- YouTube / Spotify Player -->
+        <div class="video">
+
+            <iframe
+                id="player"
+                title="Music player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                style="border-radius:12px;"
+            >
+            </iframe>
+
+        </div>
+
+
+        <!-- Source Selection -->
+        <div
+            id="sourceControls"
+            style="
+                display:flex;
+                justify-content:center;
+                gap:10px;
+                padding-top:14px;
+                flex-wrap:wrap;
+            "
+        >
+        </div>
+
+
+        <!-- Previous / Next -->
+        <div class="controls">
+
+            <button
+                id="prev"
+                type="button"
+                aria-label="Previous song"
+            >
+                ⏮
+            </button>
+
+            <button
+                id="next"
+                type="button"
+                aria-label="Next song"
+            >
+                ⏭
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Playlist -->
+    <section class="playlist">
+
+        <div class="heading">
+
+            <div>
+
+                <p class="label">
+                    YOUR COLLECTION
+                </p>
+
+                <h2>
+                    Favourite Songs
+                </h2>
+
+            </div>
+
+            <span
+                class="count"
+                id="count"
+            >
+            </span>
+
+        </div>
+
+
+        <div
+            class="songs"
+            id="songs"
+        >
+        </div>
+
+    </section>
+
+
+    <footer>
+        Made with 💕 for love song enthusiasts
+    </footer>
+
+</main>
+
+
+<script>
+
+/*
+===========================================================
+                    SONG COLLECTION
+===========================================================
+
+Each song can have:
+
+1. YouTube only
+2. Spotify only
+3. Both YouTube + Spotify
+
+Examples:
+
+YouTube only:
+{
+    title: "Song Name",
+    youtubeId: "XXXXXXXXXXX"
+}
+
+Spotify only:
+{
+    title: "Song Name",
+    spotifyId: "XXXXXXXXXXX"
+}
+
+Both:
+{
+    title: "Song Name",
+    youtubeId: "XXXXXXXXXXX",
+    spotifyId: "XXXXXXXXXXX"
+}
+
+===========================================================
+*/
+
+
+const songs = [
+
+    {
+        title: "Your Favourite Song",
+        youtubeId: "bz4jSHh9NsM"
+    },
+
+    {
+        title: "Ek Din Aap Yun Humko Mil Jayenge",
+        youtubeId: "-yvwawJ9u_M"
+    },
+
+    {
+        title: "Kalank Title Song",
+        youtubeId: "Grr0FlC8SQA"
+    },
+
+    {
+        title: "Tu Mera Koi Na Hoke Bhi Kuch Lage",
+        youtubeId: "uImKMyjOfXY"
+    },
+
+    {
+        title: "Kya Hua Tera Vada",
+        spotifyId: "5XTdgOtJYAOXiw2gHW2KmQ"
+    },
+
+    {
+        title: "Jaate Hue Lamhon",
+        spotifyId: "0BPm2ZCYW1DBMNfQKLSNpi"
+    }
+
+    /*
+    =======================================================
+                    ADD FUTURE SONGS HERE
+    =======================================================
+
+    YouTube only:
+
+    ,{
+        title: "Another YouTube Song",
+        youtubeId: "XXXXXXXXXXX"
+    }
+
+
+    Spotify only:
+
+    ,{
+        title: "Another Spotify Song",
+        spotifyId: "XXXXXXXXXXX"
+    }
+
+
+    BOTH YouTube + Spotify:
+
+    ,{
+        title: "Another Favourite",
+        youtubeId: "XXXXXXXXXXX",
+        spotifyId: "XXXXXXXXXXX"
+    }
+
+    =======================================================
+    */
+
+];
+
+
+let current = 0;
+
+
+/*
+===========================================================
+                    PLAYER ELEMENTS
+===========================================================
+*/
+
+const player =
+    document.getElementById("player");
+
+const title =
+    document.getElementById("title");
+
+const position =
+    document.getElementById("position");
+
+const sourceLabel =
+    document.getElementById("sourceLabel");
+
+const sourceControls =
+    document.getElementById("sourceControls");
+
+const list =
+    document.getElementById("songs");
+
+const count =
+    document.getElementById("count");
+
+const prev =
+    document.getElementById("prev");
+
+const next =
+    document.getElementById("next");
+
+
+/*
+===========================================================
+                CURRENT PLAYBACK SOURCE
+===========================================================
+*/
+
+let currentSource = null;
+
+
+/*
+===========================================================
+                    LOAD PLAYER
+===========================================================
+*/
+
+function loadPlayer(song, source) {
+
+    /*
+    Clear the previous iframe first.
+    This prevents an old YouTube/Spotify player
+    from remaining active when switching songs.
+    */
+
+    player.removeAttribute("src");
+
+
+    /*
+    YouTube
+    */
+
+    if (
+        source === "youtube" &&
+        song.youtubeId
+    ) {
+
+        player.src =
+            `https://www.youtube.com/embed/${encodeURIComponent(song.youtubeId)}?rel=0&playsinline=1`;
+
+        sourceLabel.textContent =
+            "▶ YouTube";
+
+        currentSource = "youtube";
+
+        return;
+    }
+
+
+    /*
+    Spotify
+    */
+
+    if (
+        source === "spotify" &&
+        song.spotifyId
+    ) {
+
+        player.src =
+            `https://open.spotify.com/embed/track/${encodeURIComponent(song.spotifyId)}?utm_source=generator`;
+
+        sourceLabel.textContent =
+            "🎵 Spotify";
+
+        currentSource = "spotify";
+
+        return;
+    }
+
+
+    /*
+    No valid source
+    */
+
+    currentSource = null;
+
+    sourceLabel.textContent =
+        "No playable source available";
+
+}
+
+
+/*
+===========================================================
+                SOURCE BUTTONS
+===========================================================
+*/
+
+function renderSourceButtons(song) {
+
+    sourceControls.innerHTML = "";
+
+
+    /*
+    If the song has both sources,
+    show both options.
+    */
+
+    const sources = [];
+
+
+    if (song.youtubeId) {
+
+        sources.push({
+            id: "youtube",
+            label: "▶ YouTube"
+        });
+
+    }
+
+
+    if (song.spotifyId) {
+
+        sources.push({
+            id: "spotify",
+            label: "🎵 Spotify"
+        });
+
+    }
+
+
+    /*
+    No source
+    */
+
+    if (!sources.length) {
+
+        sourceControls.innerHTML =
+            `<span style="color:#cdbfca;font-size:12px;">
+                No playback source available
+            </span>`;
+
+        return;
+    }
+
+
+    /*
+    Create buttons
+    */
+
+    sources.forEach(source => {
+
+        const button =
+            document.createElement("button");
+
+
+        button.type = "button";
+
+        button.textContent =
+            source.label;
+
+
+        /*
+        Button styling
+        */
+
+        button.style.border =
+            "1px solid rgba(255,255,255,.12)";
+
+        button.style.borderRadius =
+            "20px";
+
+        button.style.padding =
+            "9px 16px";
+
+        button.style.cursor =
+            "pointer";
+
+        button.style.color =
+            "#fff8fc";
+
+        button.style.background =
+            "rgba(255,255,255,.06)";
+
+
+        /*
+        Highlight active source
+        */
+
+        if (
+            source.id === currentSource
+        ) {
+
+            button.style.background =
+                "rgba(240,141,182,.18)";
+
+            button.style.borderColor =
+                "rgba(240,141,182,.45)";
+
+        }
+
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                loadPlayer(
+                    song,
+                    source.id
+                );
+
+                renderSourceButtons(song);
+
+            }
+        );
+
+
+        sourceControls.appendChild(button);
+
+    });
+
+}
+
+
+/*
+===========================================================
+                    RENDER PLAYLIST
+===========================================================
+*/
+
+function render() {
+
+
+    /*
+    Empty playlist
+    */
+
+    if (!songs.length) {
+
+        title.textContent =
+            "Playlist coming soon";
+
+        position.textContent =
+            "Add a song to begin";
+
+        count.textContent =
+            "0 songs";
+
+        sourceLabel.textContent =
+            "";
+
+        list.innerHTML =
+            `
+            <p style="color:#cdbfca;font-size:13px">
+                This playlist is ready for songs.
+            </p>
+            `;
+
+        prev.disabled = true;
+        next.disabled = true;
+
+        sourceControls.innerHTML = "";
+
+        player.removeAttribute("src");
+
+        return;
+    }
+
+
+    /*
+    Current song
+    */
+
+    const song =
+        songs[current];
+
+
+    /*
+    Song title
+    */
+
+    title.textContent =
+        song.title;
+
+
+    /*
+    Song position
+    */
+
+    position.textContent =
+        `Song ${current + 1} of ${songs.length}`;
+
+
+    /*
+    Song count
+    */
+
+    count.textContent =
+        `${songs.length} ${
+            songs.length === 1
+                ? "song"
+                : "songs"
+        }`;
+
+
+    /*
+    Determine default source.
+
+    If YouTube exists,
+    use YouTube first.
+
+    Otherwise use Spotify.
+    */
+
+    if (
+        currentSource === null ||
+        (
+            currentSource === "youtube" &&
+            !song.youtubeId
+        ) ||
+        (
+            currentSource === "spotify" &&
+            !song.spotifyId
+        )
+    ) {
+
+        if (song.youtubeId) {
+
+            currentSource = "youtube";
+
+        }
+        else if (song.spotifyId) {
+
+            currentSource = "spotify";
+
+        }
+        else {
+
+            currentSource = null;
+
+        }
+
+    }
+
+
+    /*
+    Load current player
+    */
+
+    if (currentSource) {
+
+        loadPlayer(
+            song,
+            currentSource
+        );
+
+    }
+    else {
+
+        player.removeAttribute("src");
+
+    }
+
+
+    /*
+    Render source buttons
+    */
+
+    renderSourceButtons(song);
+
+
+    /*
+    Previous button
+    */
+
+    prev.disabled =
+        current === 0;
+
+
+    /*
+    Next button
+    */
+
+    next.disabled =
+        current === songs.length - 1;
+
+
+    /*
+    Render playlist
+    */
+
+    list.innerHTML = "";
+
+
+    songs.forEach(
+        (song, index) => {
+
+            const button =
+                document.createElement("button");
+
+
+            button.type =
+                "button";
+
+
+            button.className =
+                "song" +
+                (
+                    index === current
+                        ? " active"
+                        : ""
+                );
+
+
+            /*
+            Show available sources
+            */
+
+            let sourceIcon = "›";
+
+
+            if (
+                song.youtubeId &&
+                song.spotifyId
+            ) {
+
+                sourceIcon =
+                    "YT • SP";
+
+            }
+            else if (song.youtubeId) {
+
+                sourceIcon =
+                    "▶";
+
+            }
+            else if (song.spotifyId) {
+
+                sourceIcon =
+                    "🎵";
+
+            }
+
+
+            button.innerHTML =
+
+                `
+                <span class="num">
+                    ${String(index + 1).padStart(2, "0")}
+                </span>
+
+                <span class="name"></span>
+
+                <span
+                    class="play"
+                    style="font-size:10px;"
+                >
+                    ${sourceIcon}
+                </span>
+                `;
+
+
+            /*
+            Safely insert song title
+            */
+
+            button
+                .querySelector(".name")
+                .textContent =
+                song.title;
+
+
+            /*
+            Select song
+            */
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    current =
+                        index;
+
+                    /*
+                    Reset source so the
+                    new song selects its
+                    own available source.
+                    */
+
+                    currentSource =
+                        null;
+
+                    render();
+
+                }
+            );
+
+
+            list.appendChild(button);
+
+        }
+    );
+
+}
+
+
+/*
+===========================================================
+                PREVIOUS SONG
+===========================================================
+*/
+
+prev.addEventListener(
+    "click",
+    () => {
+
+        if (current > 0) {
+
+            current--;
+
+            currentSource =
+                null;
+
+            render();
+
+        }
+
+    }
+);
+
+
+/*
+===========================================================
+                    NEXT SONG
+===========================================================
+*/
+
+next.addEventListener(
+    "click",
+    () => {
+
+        if (
+            current <
+            songs.length - 1
+        ) {
+
+            current++;
+
+            currentSource =
+                null;
+
+            render();
+
+        }
+
+    }
+);
+
+
+/*
+===========================================================
+                    INITIAL LOAD
+===========================================================
+*/
+
+render();
+
+</script>
+
+</body>
+
+</html>
+```
