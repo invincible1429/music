@@ -1,2 +1,225 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
-*{box-sizing:border-box}body{margin:0;min-height:100vh;color:#fff8fc;font-family:Inter,sans-serif;background:radial-gradient(circle at 15% 10%,#ca5b9133,transparent 28%),radial-gradient(circle at 85% 25%,#7341a028,transparent 30%),linear-gradient(145deg,#0d0810,#180d19 55%,#0d0910)}.page{width:min(760px,calc(100% - 32px));margin:auto;padding:72px 0 35px}header{text-align:center}.mark,.avatar{display:grid;place-items:center}.mark{width:58px;height:58px;margin:auto;border:1px solid #f08db659;border-radius:50%;color:#f08db6;font-size:28px}.eyebrow,small{display:block;margin:16px 0 0;color:#f08db6;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}h1,h2{font-family:"Cormorant Garamond",Georgia,serif}h1{font-size:76px;line-height:.85;margin:16px 0}h1 span{color:#f08db6}.intro{color:#cdbfca;line-height:1.7;max-width:500px;margin:20px auto 45px;font-size:14px}.people{display:grid;gap:14px}.person{display:flex;align-items:center;gap:17px;padding:20px;text-decoration:none;color:#fff8fc;border:1px solid #ffffff1a;border-radius:22px;background:#1f1420d1;transition:.2s}.person:hover{transform:translateY(-3px);border-color:#f08db659}.avatar{width:62px;height:62px;flex:0 0 62px;border-radius:18px;background:linear-gradient(135deg,#3b1835,#9d4777);font:600 28px "Cormorant Garamond",serif}.person h2{font-size:34px;margin:2px 0}.person p{margin:3px 0;color:#cdbfca;font-size:12px}.person b{margin-left:auto;color:#f08db6;font-size:25px}footer{text-align:center;color:#cdbfca;font-size:11px;margin-top:38px}@media(max-width:560px){.page{padding-top:45px}h1{font-size:58px}}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    color: #fff8fc;
+
+    font-family: "Inter", sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(202,91,145,0.20),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(115,65,160,0.16),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #0d0810,
+            #180d19 55%,
+            #0d0910
+        );
+}
+
+.page {
+    width: min(760px, calc(100% - 32px));
+
+    margin: auto;
+
+    padding: 72px 0 35px;
+}
+
+header {
+    text-align: center;
+}
+
+.mark {
+    width: 58px;
+    height: 58px;
+
+    display: grid;
+    place-items: center;
+
+    margin: auto;
+
+    border: 1px solid rgba(240,141,182,0.35);
+
+    border-radius: 50%;
+
+    color: #f08db6;
+
+    font-size: 28px;
+}
+
+.eyebrow {
+    display: block;
+
+    margin: 16px 0 0;
+
+    color: #f08db6;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.2em;
+
+    text-transform: uppercase;
+}
+
+h1,
+h2 {
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+}
+
+h1 {
+    font-size: 76px;
+
+    line-height: 0.85;
+
+    margin: 16px 0;
+}
+
+h1 span {
+    color: #f08db6;
+}
+
+.intro {
+    color: #cdbfca;
+
+    line-height: 1.7;
+
+    max-width: 500px;
+
+    margin: 20px auto 45px;
+
+    font-size: 14px;
+}
+
+.back {
+    color: #cdbfca;
+
+    text-decoration: none;
+
+    font-size: 12px;
+}
+
+.back:hover {
+    color: #f08db6;
+}
+
+.people {
+    display: grid;
+
+    gap: 14px;
+}
+
+.person {
+    display: flex;
+
+    align-items: center;
+
+    gap: 17px;
+
+    padding: 20px;
+
+    text-decoration: none;
+
+    color: #fff8fc;
+
+    border: 1px solid rgba(255,255,255,0.10);
+
+    border-radius: 22px;
+
+    background: rgba(31,20,32,0.82);
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.person:hover {
+    transform: translateY(-3px);
+
+    border-color:
+        rgba(240,141,182,0.35);
+}
+
+.avatar {
+    width: 62px;
+    height: 62px;
+
+    flex: 0 0 62px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3b1835,
+            #9d4777
+        );
+
+    font-size: 27px;
+}
+
+.person h2 {
+    font-size: 34px;
+
+    margin: 2px 0;
+}
+
+.person p {
+    margin: 3px 0;
+
+    color: #cdbfca;
+
+    font-size: 12px;
+}
+
+.person b {
+    margin-left: auto;
+
+    color: #f08db6;
+
+    font-size: 25px;
+}
+
+footer {
+    text-align: center;
+
+    color: #cdbfca;
+
+    font-size: 11px;
+
+    margin-top: 38px;
+}
+
+@media (max-width: 560px) {
+
+    .page {
+        padding-top: 45px;
+    }
+
+    h1 {
+        font-size: 58px;
+    }
+
+}
