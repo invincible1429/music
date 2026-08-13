@@ -8,26 +8,31 @@ body {
     margin: 0;
     min-height: 100vh;
 
-    color: #fff8fc;
+    color: #fff9fc;
 
     font-family: "Inter", sans-serif;
 
     background:
         radial-gradient(
-            circle at 15% 10%,
-            rgba(202, 91, 145, 0.20),
-            transparent 28%
+            circle at 18% 12%,
+            rgba(244, 137, 177, 0.28),
+            transparent 30%
         ),
         radial-gradient(
-            circle at 85% 25%,
-            rgba(115, 65, 160, 0.16),
-            transparent 30%
+            circle at 82% 20%,
+            rgba(180, 119, 190, 0.22),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(211, 91, 145, 0.16),
+            transparent 38%
         ),
         linear-gradient(
             145deg,
-            #0d0810,
-            #180d19 55%,
-            #0d0910
+            #241321 0%,
+            #321a2c 45%,
+            #211322 100%
         );
 }
 
@@ -42,27 +47,37 @@ header {
 }
 
 .mark {
-    width: 58px;
-    height: 58px;
+    width: 62px;
+    height: 62px;
 
     display: grid;
     place-items: center;
 
     margin: auto;
 
-    border: 1px solid rgba(240, 141, 182, 0.35);
+    border: 1px solid rgba(255, 169, 198, 0.55);
     border-radius: 50%;
 
-    color: #f08db6;
-    font-size: 28px;
+    color: #ff9fc2;
+    font-size: 30px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 130, 170, 0.18),
+            transparent 70%
+        );
+
+    box-shadow:
+        0 0 30px rgba(240, 100, 150, 0.16);
 }
 
 .eyebrow {
     display: block;
 
-    margin: 16px 0 0;
+    margin: 18px 0 0;
 
-    color: #f08db6;
+    color: #ff9fbe;
 
     font-size: 10px;
     font-weight: 600;
@@ -80,17 +95,26 @@ h2 {
 }
 
 h1 {
-    font-size: 76px;
+    font-size: 78px;
     line-height: 0.85;
+
     margin: 16px 0;
+
+    color: #fff8fb;
+
+    text-shadow:
+        0 4px 25px rgba(255, 130, 175, 0.15);
 }
 
 h1 span {
-    color: #f08db6;
+    color: #ff91b5;
+
+    text-shadow:
+        0 0 25px rgba(255, 110, 160, 0.22);
 }
 
 .intro {
-    color: #cdbfca;
+    color: #ead0db;
 
     line-height: 1.7;
 
@@ -103,7 +127,7 @@ h1 span {
 
 .people {
     display: grid;
-    gap: 14px;
+    gap: 16px;
 }
 
 .person {
@@ -112,35 +136,48 @@ h1 span {
 
     gap: 17px;
 
-    padding: 20px;
+    padding: 22px;
 
     text-decoration: none;
 
-    color: #fff8fc;
+    color: #fff8fb;
 
-    border: 1px solid rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 171, 199, 0.20);
 
     border-radius: 22px;
 
-    background: rgba(31, 20, 32, 0.82);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(78, 35, 61, 0.90),
+            rgba(55, 27, 48, 0.92)
+        );
+
+    box-shadow:
+        0 15px 40px rgba(30, 8, 23, 0.22);
 
     transition:
         transform 0.2s ease,
-        border-color 0.2s ease;
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .person:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
 
     border-color:
-        rgba(240, 141, 182, 0.35);
+        rgba(255, 150, 185, 0.48);
+
+    box-shadow:
+        0 18px 45px rgba(50, 10, 35, 0.30),
+        0 0 25px rgba(240, 100, 150, 0.08);
 }
 
 .avatar {
-    width: 62px;
-    height: 62px;
+    width: 64px;
+    height: 64px;
 
-    flex: 0 0 62px;
+    flex: 0 0 64px;
 
     display: grid;
     place-items: center;
@@ -150,22 +187,30 @@ h1 span {
     background:
         linear-gradient(
             135deg,
-            #3b1835,
-            #9d4777
+            #9a426d,
+            #d16a91
         );
 
-    font-size: 27px;
+    color: #fff;
+
+    font-size: 28px;
+
+    box-shadow:
+        0 8px 25px rgba(180, 55, 110, 0.25);
 }
 
 .person h2 {
-    font-size: 34px;
+    font-size: 35px;
+
     margin: 2px 0;
+
+    color: #fff5f8;
 }
 
 .person p {
     margin: 3px 0;
 
-    color: #cdbfca;
+    color: #e2c2cf;
 
     font-size: 12px;
 }
@@ -173,19 +218,19 @@ h1 span {
 .person b {
     margin-left: auto;
 
-    color: #f08db6;
+    color: #ff9bb9;
 
-    font-size: 25px;
+    font-size: 26px;
 }
 
 footer {
     text-align: center;
 
-    color: #cdbfca;
+    color: #d9b5c3;
 
     font-size: 11px;
 
-    margin-top: 38px;
+    margin-top: 40px;
 }
 
 @media (max-width: 560px) {
@@ -195,7 +240,7 @@ footer {
     }
 
     h1 {
-        font-size: 58px;
+        font-size: 60px;
     }
 
 }
